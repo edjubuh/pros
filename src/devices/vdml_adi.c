@@ -3,7 +3,7 @@
  *
  * Contains functions for interacting with the V5 ADI.
  *
- * Copyright (c) 2017-2020, Purdue University ACM SIGBots.
+ * Copyright (c) 2017-2019, Purdue University ACM SIGBots.
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -61,8 +61,8 @@ typedef union adi_data {
 #define validate_type(device, port, type)                                                                 \
 	adi_port_config_e_t config = (adi_port_config_e_t)vexDeviceAdiPortConfigGet(device->device_info, port); \
 	if (config != type) {                                                                                   \
-		errno = EADDRINUSE;                                                                                   \
-		return PROS_ERR;                                                                                      \
+		errno = EADDRINUSE;																					\
+		return_port(INTERNAL_ADI_PORT, PROS_ERR);															\
 	}
 
 #define validate_motor(device, port)                                                                      \
